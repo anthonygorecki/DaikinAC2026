@@ -1,6 +1,6 @@
 # Daikin Legacy CLI (BRP072C42)
 
-Asynchronous Python CLI and library for controlling legacy Daikin BRP072C42 Wi-Fi adapters using a "Golden Engine" state-persistence logic.
+Asynchronous Python CLI and library for controlling legacy Daikin BRP072C42 Wi-Fi adapters using state-persistence logic.
 
 ## Technical Requirements
 * **Python 3.7+**
