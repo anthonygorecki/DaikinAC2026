@@ -36,3 +36,42 @@ daikin_legacy.py: The core library handling "Golden Engine" logic (fetching stat
 daikin.conf: (User Created) Stores local network credentials.
 
 daikin_readme: Technical documentation.
+
+Example of help contents:
+./daikin_cli.py
+usage: daikin_cli [-h] {status,on,off,force-off,speed,dir,cool,heat,dry,fan} ...
+
+CLI for Daikin BRP069B41 matching official app terminology.
+
+positional arguments:
+  {status,on,off,force-off,speed,dir,cool,heat,dry,fan}
+                        Available Commands
+    status              Show all current settings
+    on                  Power ON
+    off                 Power OFF (Standard)
+    force-off           Attempt shutdown with verification and retries
+    speed               Set Fan Speed
+    dir                 Set Airflow Swing
+    cool                Set to COOL mode
+    heat                Set to HEAT mode
+    dry                 Set to DRY mode
+    fan                 Set to FAN mode
+
+options:
+  -h, --help            show this help message and exit
+
+EXAMPLES:
+  Set Fan Speed:        ./daikin_cli.py speed auto (Options: auto, eco, 1, 2, 3, 4, 5)
+  Set Airflow:          ./daikin_cli.py dir 3d     (Options: off, vertical, horizontal, 3d)
+  Verified Shutdown:    ./daikin_cli.py force-off  (Retries until OFF)
+
+get status: ./daikin_cli.py status
+
+[DEVICE STATUS]
+Power:    OFF
+Mode:     Fan
+Fan:      5 | Airflow: 3D
+Inside:   22.0°C | Target: --°C
+Outside:  24.0°C
+
+
