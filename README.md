@@ -75,3 +75,10 @@ Inside:   22.0°C | Target: --°C
 Outside:  24.0°C
 
 
+## Hardware Compatibility
+Tested and verified with the following hardware profile:
+* **Adapter Model**: Daikin BRP072C42 (Wireless LAN Connecting Adapter)
+* **Firmware Version**: 1.16.0
+* **Interface**: S21 connection to indoor unit PCB
+* **Security**: Mandatory HTTPS with UUID terminal registration
+* **Compatibility**: Confirmed for Daikin Cora, Alira, and US7 series
