@@ -1,0 +1,42 @@
+# Daikin Legacy CLI (BRP069B41)
+
+## Setup Requirements
+1. **Python 3.7+**: Verify with `python3 --version`.
+2. **Dependencies**: Install the asynchronous HTTP library:
+   `pip install aiohttp`
+3. **Permissions**: Make the CLI executable:
+   `chmod +x daikin_cli.py`
+
+## Configuration
+Before running, you MUST create a file named 'daikin.conf' in the same folder as the scripts.
+
+Required fields in daikin.conf:
+   IP_ADDRESS=192.168.x.x
+   MY_UUID=your_chosen_32_character_uuid
+
+## Pairing (One-Time Registration)
+If you are using a new or custom UUID string, the Daikin adapter must "trust" it once:
+1. Locate the **Security Key** (found on a sticker on the Wi-Fi adapter).
+2. Run this manual command (replace IP, UUID, and KEY with your details):
+   curl -k -H "X-Daikin-uuid: YOUR_UUID" "https://YOUR_IP/common/set_remote_regy_if?key=YOUR_KEY"
+3. If the unit returns `ret=OK`, your UUID is authorized and the CLI is ready to use.
+
+## Usage Examples & Expected Results
+
+### Check Status
+Command: `./daikin_cli.py status`
+Result: Displays current Power, Mode, Fan speed, and Temperatures.
+
+### Verified Shutdown
+Command: `./daikin_cli.py force-off`
+Result:
+   Shutdown Attempt 1...
+   --- [SUCCESS] Shutdown Verified ---
+(If the unit stays ON, it will automatically retry up to 5 times).
+
+### Update Settings (Power Preserved)
+Command: `./daikin_cli.py cool 18`
+Result: Updates the unit to Cooling mode at 18°C. If the unit was OFF, it remains OFF.
+
+### Smart Sanitization
+If the unit returns '--' for temperature (common in Fan mode), the script defaults to '22' internally to maintain hardware compliance.
